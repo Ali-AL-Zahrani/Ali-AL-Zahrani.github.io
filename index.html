@@ -1,107 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My AI Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Alzahrani — AI &amp; Machine Learning</title>
+  <meta name="description" content="Ali Alzahrani — Computer Science senior building AI and machine-learning applications in healthcare and space. Python, TensorFlow, LangChain." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --bg: #F0F1F3;
+      --surface: #FFFFFF;
+      --ink: #14151A;
+      --ink-2: #3C3F47;
+      --muted: #72767F;
+      --line: #DEE1E6;
+      --accent: #2540FF;
+      --accent-soft: rgba(37, 64, 255, 0.08);
+
+      --display: "Space Grotesk", system-ui, sans-serif;
+      --body: "Inter", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: clamp(2.5rem, 7vw, 6rem) 1.5rem;
     }
-    header {
-      text-align: center;
-      padding: 50px 20px;
-      background: #020617;
+
+    .wrap { max-width: 760px; margin: 0 auto; }
+
+    /* ---------- Hero ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    h1 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(2.7rem, 9vw, 4.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-top: 0.8rem;
     }
-    header p {
-      color: #94a3b8;
+    .role {
+      font-family: var(--mono);
+      font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+      color: var(--accent);
+      margin-top: 1rem;
+      letter-spacing: -0.01em;
     }
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+    .lead {
+      font-size: 1.08rem;
+      color: var(--ink-2);
+      max-width: 56ch;
+      margin-top: 1.4rem;
     }
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    h2 {
-      color: #38bdf8;
-    }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
+
+    /* ---------- Actions ---------- */
+    .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
     .btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background: #38bdf8;
-      color: #020617;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-weight: bold;
+      font-family: var(--body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.7rem 1.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: var(--surface);
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
     }
+    .btn:hover { transform: translateY(-2px); border-color: var(--ink); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1c33d6; border-color: #1c33d6; }
+
+    /* ---------- Flow / nodes ---------- */
+    .flow { position: relative; margin-top: clamp(3.5rem, 9vw, 6rem); padding-left: 2rem; }
+    .flow::before {
+      content: ""; position: absolute;
+      left: 5px; top: 8px; bottom: 8px;
+      width: 1px; background: var(--line);
+    }
+    .node { position: relative; padding-bottom: 3rem; }
+    .node:last-child { padding-bottom: 0; }
+    .node::before {
+      content: ""; position: absolute;
+      left: -2rem; top: 6px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+    .label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .node p.text { color: var(--ink-2); font-size: 1.05rem; }
+    .edu { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); margin-top: 0.9rem; }
+
+    /* ---------- Projects & experience ---------- */
+    .item { padding: 1.1rem 0; border-top: 1px solid var(--line); }
+    .item:first-of-type { border-top: none; padding-top: 0; }
+    .item-head {
+      display: flex; justify-content: space-between;
+      align-items: baseline; gap: 1rem; flex-wrap: wrap;
+    }
+    .item-head h3 {
+      font-family: var(--display);
+      font-weight: 600; font-size: 1.08rem;
+      color: var(--ink); letter-spacing: -0.01em;
+    }
+    .date { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); white-space: nowrap; }
+    .item p { color: var(--ink-2); font-size: 0.98rem; margin-top: 0.35rem; }
+    .org { color: var(--accent); font-weight: 500; }
+
+    /* ---------- Skills ---------- */
+    .skills { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+    .skill {
+      font-family: var(--mono); font-size: 0.85rem;
+      color: var(--ink-2); background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 0.5rem 0.9rem; border-radius: 8px;
+    }
+
+    /* ---------- Certs ---------- */
+    .certs { margin-top: 1.4rem; }
+    .certs .label { margin-bottom: 0.6rem; }
+    .certs ul { list-style: none; display: grid; gap: 0.35rem; }
+    .certs li { font-size: 0.92rem; color: var(--ink-2); padding-left: 1.1rem; position: relative; }
+    .certs li::before { content: "›"; position: absolute; left: 0; color: var(--accent); }
+
+    /* ---------- Contact ---------- */
+    .contact { display: grid; gap: 0.85rem; }
+    .contact a {
+      display: inline-flex; align-items: baseline; gap: 0.9rem;
+      text-decoration: none; color: var(--ink);
+      font-size: 1.05rem; width: fit-content;
+      transition: color 0.15s ease;
+    }
+    .contact a:hover { color: var(--accent); }
+    .contact .k {
+      font-family: var(--mono); font-size: 0.78rem;
+      color: var(--muted); min-width: 5.5rem; letter-spacing: 0.04em;
+    }
+    .contact .v { border-bottom: 1px solid var(--line); }
+
     footer {
-      text-align: center;
-      padding: 20px;
-      color: #64748b;
+      margin-top: clamp(3.5rem, 9vw, 6rem);
+      padding-top: 1.5rem; border-top: 1px solid var(--line);
+      font-family: var(--mono); font-size: 0.75rem;
+      color: var(--muted); letter-spacing: 0.02em;
+    }
+
+    a:focus-visible, .btn:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s cubic-bezier(.2,.7,.3,1) forwards; }
+      .reveal:nth-child(1) { animation-delay: 0.05s; }
+      .reveal:nth-child(2) { animation-delay: 0.13s; }
+      .reveal:nth-child(3) { animation-delay: 0.21s; }
+      .reveal:nth-child(4) { animation-delay: 0.29s; }
+      @keyframes rise { to { opacity: 1; transform: none; } }
+    }
+
+    @media (max-width: 520px) {
+      .contact a { flex-direction: column; gap: 0.2rem; }
+      .contact .k { min-width: 0; }
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="eyebrow reveal">Riyadh, Saudi Arabia</p>
+      <h1 class="reveal">Ali Alzahrani</h1>
+      <p class="role reveal">AI &amp; Machine Learning · Computer Science senior @ IMSIU</p>
+      <p class="lead reveal">I build AI and machine-learning applications across the healthcare and space domains — turning real data into models that solve real problems. Comfortable across the full software development life cycle, and looking for a cooperative training or junior AI role.</p>
 
-<header>
-  <h1>Ali Alzahrani</h1>
-  <p>Junior AI Engineer | Agentic AI | Python & LangChain</p>
-</header>
+      <nav class="actions reveal" aria-label="Primary">
+        <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener">View résumé</a>
+        <a class="btn" href="mailto:ali.a.alzahrani2000@gmail.com">Email me</a>
+        <a class="btn" href="https://github.com/Ali-AL-Zahrani" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ali-ahmed-alzahrani" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </header>
 
-<section>
-  <div class="card">
-    <h2>About Me</h2>
-    <p>
-      I am a beginner AI engineer currently learning and building projects in artificial intelligence.
-      My focus is on agentic design and building intelligent systems using modern tools.
-    </p>
-    <p>
-      I am actively looking for opportunities as a <strong>Junior AI Engineer</strong>.
-    </p>
+    <main class="flow">
+      <section class="node">
+        <p class="label">about</p>
+        <p class="text">Computer Science senior at Imam Mohammad Ibn Saud Islamic University with hands-on experience building AI and machine-learning applications. Skilled in Python, Java, and Swift, with practical data analysis using pandas, scikit-learn, and TensorFlow. I enjoy research-oriented problem solving and working in teams to ship things that work.</p>
+        <p class="edu">B.Sc. Computer Science · IMSIU · expected 2026 · team lead, senior graduation project</p>
+      </section>
+
+      <section class="node">
+        <p class="label">projects</p>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Yaqth — Epilepsy Seizure Prediction</h3>
+            <span class="date">Jul 2025 – Present</span>
+          </div>
+          <p>An AI application that predicts epileptic seizures before they occur using health data collected from Apple Watch. Built as part of a startup accelerator program.</p>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Pancreatic Cancer Prediction System</h3>
+            <span class="date">Aug 2025 – May 2026</span>
+          </div>
+          <p>Reads biometric indicators from a smartwatch and passes them to a machine-learning model to assess pancreatic cancer risk.</p>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Galaxy Hunters — NASA Space Apps</h3>
+            <span class="date">Oct 2025</span>
+          </div>
+          <p>An educational game powered by an embedded AI model that identifies exoplanets from NASA's open datasets, teaching players how worlds beyond our solar system are discovered. A team project built on large-scale astronomical data.</p>
+        </div>
+      </section>
+
+      <section class="node">
+        <p class="label">skills</p>
+        <div class="skills">
+          <span class="skill">Python</span>
+          <span class="skill">Java</span>
+          <span class="skill">Swift</span>
+          <span class="skill">TensorFlow</span>
+          <span class="skill">scikit-learn</span>
+          <span class="skill">pandas</span>
+          <span class="skill">Model Development</span>
+          <span class="skill">Data Analysis</span>
+          <span class="skill">Git &amp; GitHub</span>
+        </div>
+      </section>
+
+      <section class="node">
+        <p class="label">experience</p>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>AI Foundation Program Trainee</h3>
+            <span class="date">Jul – Aug 2025</span>
+          </div>
+          <p><span class="org">Apple Developer Academy</span> — Selected for the first AI-focused cohort. Completed a five-week intensive on AI and data-driven product development, with hands-on data collection, cleaning, and analysis, plus a foundation in Swift and iOS.</p>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Event &amp; Operations Committee Member</h3>
+            <span class="date">Sep 2024 – Present</span>
+          </div>
+          <p><span class="org">Information Security Club, IMSIU</span> — Help plan and run hackathons, technical workshops, and student training sessions, and contribute to securing sponsorships and partnerships.</p>
+        </div>
+
+        <div class="certs">
+          <p class="label">certifications</p>
+          <ul>
+            <li>Apple Foundation Program — Apple Developer Academy</li>
+            <li>Introduction to Data Science in Python — University of Michigan</li>
+            <li>Data Collection and Processing with Python — University of Michigan</li>
+            <li>Python Functions, Files, and Dictionaries — University of Michigan</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="node">
+        <p class="label">contact</p>
+        <div class="contact">
+          <a href="mailto:ali.a.alzahrani2000@gmail.com"><span class="k">email</span><span class="v">ali.a.alzahrani2000@gmail.com</span></a>
+          <a href="https://github.com/Ali-AL-Zahrani" target="_blank" rel="noopener"><span class="k">github</span><span class="v">Ali-AL-Zahrani</span></a>
+          <a href="https://www.linkedin.com/in/ali-ahmed-alzahrani" target="_blank" rel="noopener"><span class="k">linkedin</span><span class="v">ali-ahmed-alzahrani</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Ali Alzahrani — built &amp; deployed on GitHub Pages
+    </footer>
   </div>
-
-  <div class="card">
-    <h2>Skills & Tech Stack</h2>
-    <ul>
-      <li>Python</li>
-      <li>LangChain</li>
-      <li>AI Agents & Agentic Design</li>
-      <li>Machine Learning Basics</li>
-      <li>Git & GitHub</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Resume</h2>
-    <p>You can view or download my resume here:</p>
-    <a class="btn" href="resume.pdf" target="_blank">View Resume</a>
-  </div>
-
-  <div class="card">
-    <h2>Contact Me</h2>
-    <p>Email: ali.a.alzahrani2000@gmail.com</p>
-    <p>GitHub:</p>
-    <a class="btn" href="https://github.com/Ali-AL-Zahrani" target="_blank">View My GitHub</a>
-    <p>LinkedIn:</p>
-    <a class="btn" href="https://www.linkedin.com/in/ali-ahmed-alzahrani" target="_blank">View My LinkedIn</a>
-</footer>
-
 </body>
 </html>
